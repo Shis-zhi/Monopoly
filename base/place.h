@@ -9,15 +9,15 @@ public:
     Place(const Place& place) = default;
     ~Place() = default;
     Place& operator=(const Place& place) = delete;
-    int GetCost() const{
+    uint32_t GetCost() const{
         return this->cost;
     }
-    void SetCost(const int cost) {
+    void SetCost(const uint32_t cost) {
         this->cost = cost;
     }
 private:
     Player owner;
-    int cost;
+    uint32_t cost;
 };
 }// namespace monopoly
 #endif // PLACE_H_
