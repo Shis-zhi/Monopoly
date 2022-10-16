@@ -14,7 +14,7 @@ public:
 
     void PlayerBuyFromBank(Player& player, Place& place);
     void PlayerSellToBank(Player& player, Place& place);
-    void PlayerUpdatePlace(Player& player, Place& place);
+    void PlayerUpdatePlace(Player& player);
 
 private:
     Bank global_bank;

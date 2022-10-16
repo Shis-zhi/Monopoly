@@ -1,19 +1,23 @@
 #include"player.h"
 namespace monopoly{
 //随机数生成骰子点数：1-6
-void Player::GetDiceNum(){
-    this->dice_num = 
+inline uint8_t Player::DiceNum(){
+
 }
 //根据骰子点数决定前进步数
-void Player::UpdateCurPlace(){
+inline void Player::UpdateCurPlace(){
+
+}
+//获取player当前位置
+inline Place Player::CurPlace(){
 
 }
 //获得货币
-void Player::GetMoney(uint32_t money){
-
+inline void Player::GetMoney(uint32_t money){
+    this->money += money;
 }
 //失去货币，this->money - money < 0?
-bool Player::LostMoney(uint32_t money){
+inline bool Player::LostMoney(uint32_t money){
 
 }
 //向其他用户支付货币
@@ -29,15 +33,23 @@ void Player::PayToBankForHouse(uint32_t money, Bank& bank){
 
 }
 //将用户状态设置为NORMAL
-void Player::SetNormState(){
+inline void Player::SetNormState(){
 
 }
 //将用户状态设置为FORBIDDEN
-void Player::SetForbiddenState(){
+inline void Player::SetForbiddenState(){
 
 }
 //判断place是否在player的PlaceVector中
 bool Player::InPlaceVector(const Place& place) const{
+
+}
+//将place添加到player的PlaceVector中
+void Player::GetPlace(Place& place){
+
+}
+//将place从player的PlaceVector中删除,成功返回true，否则返回false
+bool Player::LostPlace(Place& place){
 
 }
 }

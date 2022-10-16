@@ -9,8 +9,11 @@ public:
     Place() = default;
     Place(const Place& place) = default;
     ~Place() = default;
-    uint32_t GetCost() const{
+    uint32_t Cost() const{
         return this->cost;
+    }
+    Player Owner() const {
+        return this->owner;
     }
     void SetCost(const uint32_t& cost) {
         this->cost = cost;
@@ -22,8 +25,11 @@ public:
     void BuildHouse(const Player& player){
         this->house_num++;
     }
-    void BelongsToBank(Bank& bank) {
+    void SetOnwerBank() {
         this->belongs_to_bank = true; 
+    }
+    bool BelongsToBank() const {
+        return this->belongs_to_bank;
     }
 private:
     bool belongs_to_bank;
@@ -42,8 +48,9 @@ public:
         this->money += money;
     }
     void DistributeMoneyToPlayer(uint32_t money, Player& player);
+    //TODO:银行的钱是无限的？
 private:
     uint32_t money = INITMONEY;
-}
+};
 }// namespace monopoly
 #endif // PLACE_H_
