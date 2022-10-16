@@ -3,6 +3,7 @@
 
 #include"./player.h"
 #include"./tool.h"
+#include<vector>
 namespace monopoly{
 typedef enum{Black, Red, Green, Yellow} Color;
 typedef enum{Zone,Hospital,Prison,Mine,MagicRoom,GiftRoom,ToolRoom} Type;
@@ -63,7 +64,7 @@ public:
 
     void GivePointToPlayer(Player& player);
 private:
-    int8_t point_num;
+    uint8_t point_num;
 };
 class MagicRoom : public Place{
 public:
@@ -81,23 +82,25 @@ public:
     ~GiftRoom() = default;
     Type getType() = delete;
 
-    void MaybePlayerGetGift(Player& player);
+    void MaybePlayerGetGift(Player& player, uint8_t choice);
     void ChooseGift1(Player& player);
     void ChooseGift2(Player& player);
     void ChooseGift3(Player& player);
 private:
-    const int money_num;
-    const int point_num;
+    const uint8_t money_num;
+    const uint8_t point_num;
 };
 class ToolRoom : public Place{
+public:
     ToolRoom() = default;
     ToolRoom(const ToolRoom& toolRoom) = delete;
     ~ToolRoom() = default;
     Type getType() = delete;
 
-    void MaybePlayerBuyTool(Player& player);
+    void MaybePlayerBuyTool(Player& player, uint8_t choice);
     void BuyTool(Player& player, Tool& tool);
-
+private:
+    const std::vector<Tool> tools;
 };
 }// namespace monopoly
 #endif // PLACE_H_
