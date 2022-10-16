@@ -11,4 +11,4 @@ void Map::InitPlaces(){
 void Map::InitPlayers(){
 
 }
-}
+}// namespace monopoly

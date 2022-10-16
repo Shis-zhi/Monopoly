@@ -26,6 +26,7 @@ public:
     bool LostPoint(uint32_t point);
     void PayToOtherPlayer(uint32_t money, Player& other);
     bool InZoneVector(const Zone& zone) const;
+    bool InToolVector(const Tool& tool) const;
     void GetZone(Zone& zone);
     bool LostZone(Zone& zone);
     void GetTool(Tool& tool);

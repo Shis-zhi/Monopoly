@@ -41,4 +41,4 @@ void ToolRoom::MaybePlayerBuyTool(Player& player, uint8_t choice){
 void ToolRoom::BuyTool(Player& player, Tool& tool){
 
 }
-}
+}// namespace monopoly

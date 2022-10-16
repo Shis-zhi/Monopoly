@@ -7,7 +7,6 @@ public:
     Tool() = default;
     Tool(const Tool& Tool) = default;
     ~Tool() = default;
-    const Tool& operator=(const Tool& tool) = delete;
 
 private:
     //TODO

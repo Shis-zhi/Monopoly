@@ -1,10 +1,10 @@
 #ifndef MAP_H_
 #define MAP_H_
+#include"./public.h"
 #include"./place.h"
 #include<vector>
 #include<memory>
 namespace monopoly{
-const uint8_t MaxSize = 69;
 class Map{
 public:
     void InitMap();
@@ -13,5 +13,5 @@ public:
 private:
     std::vector<std::unique_ptr<Place>> map;
 };
-}
+}// namespace monopoly
 #endif

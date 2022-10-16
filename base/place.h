@@ -1,20 +1,22 @@
 #ifndef PLACE_H_
 #define PLACE_H_
-
+#include"./public.h"
 #include"./player.h"
 #include"./tool.h"
 #include<vector>
 namespace monopoly{
-typedef enum{Black, Red, Green, Yellow} Color;
-typedef enum{ZONE,HOSPITAL,PRISON,MINE,MAGICROOM,GIFTROOM,TOOLROOM} Type;
 class Place{
 public:
     Place() = default;
     Place(const Place& place) = default;
     ~Place() = default;
+
+    //friend class Player;
+
     uint8_t getPosition() const { return position; }
     Color getColor() const { return color; }
     Tool getTool() const { return tool; }
+    void setTool(const Tool& tool) { this->tool = tool; }
     Type getType() const { return type; }
 protected:
     bool belong_to_bank = true;
@@ -30,10 +32,10 @@ public:
     Zone(const Zone& zone) = default;
     ~Zone() = default;
     Type getType() = delete;
-
     uint16_t getCost() const { return cost; }
     uint8_t getHouseNum() const { return house_num; }
 private:
+    Player owner;
     uint16_t cost;
     uint8_t house_num;
 };
