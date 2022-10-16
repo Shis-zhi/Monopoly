@@ -6,7 +6,7 @@
 #include<vector>
 namespace monopoly{
 typedef enum{Black, Red, Green, Yellow} Color;
-typedef enum{Zone,Hospital,Prison,Mine,MagicRoom,GiftRoom,ToolRoom} Type;
+typedef enum{ZONE,HOSPITAL,PRISON,MINE,MAGICROOM,GIFTROOM,TOOLROOM} Type;
 class Place{
 public:
     Place() = default;

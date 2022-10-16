@@ -5,11 +5,11 @@ inline uint8_t Player::DiceNum(){
 
 }
 //根据骰子点数决定前进步数
-inline void Player::UpdateCurPlace(){
+inline void Player::UpdateCurZone(){
 
 }
 //获取player当前位置
-inline Place Player::CurPlace(){
+inline Zone Player::CurZone(){
 
 }
 //获得货币
@@ -24,24 +24,16 @@ inline bool Player::LostMoney(uint32_t money){
 void Player::PayToOtherPlayer(uint32_t money, Player& other){
 
 }
-//将用户状态设置为NORMAL
-inline void Player::SetNormState(){
+//判断zone是否在player的ZoneVector中
+bool Player::InZoneVector(const Zone& zone) const{
 
 }
-//将用户状态设置为FORBIDDEN
-inline void Player::SetForbiddenState(){
+//将zone添加到player的ZoneVector中
+void Player::GetZone(Zone& zone){
 
 }
-//判断place是否在player的PlaceVector中
-bool Player::InPlaceVector(const Place& place) const{
-
-}
-//将place添加到player的PlaceVector中
-void Player::GetPlace(Place& place){
-
-}
-//将place从player的PlaceVector中删除,成功返回true，否则返回false
-bool Player::LostPlace(Place& place){
+//将zone从player的ZoneVector中删除,成功返回true，否则返回false
+bool Player::LostZone(Zone& zone){
 
 }
 }
