@@ -27,7 +27,7 @@ private:
 class Zone : public Place{
 public:
     Zone() = default;
-    Zone(const Zone& zone) = delete;
+    Zone(const Zone& zone) = default;
     ~Zone() = default;
     Type getType() = delete;
 

@@ -5,6 +5,7 @@
 #include<vector>
 
 namespace monopoly{
+const int INITMONEY = 10000;
 class Player{
 public:
     Player()= default;
@@ -27,16 +28,16 @@ public:
     bool InZoneVector(const Zone& zone) const;
     void GetZone(Zone& zone);
     bool LostZone(Zone& zone);
-    void GetTool(Tool& tool,Zone& zone);
-    bool UseTool(Tool& tool,Zone& zone);
+    void GetTool(Tool& tool);
+    bool UseTool(Tool& tool, Zone& zone);
     
 private:
-    uint32_t money;
-    uint32_t point;
+    uint32_t money = INITMONEY;
+    uint32_t point = 0;
     uint8_t dice_num;
     enum PlayerState{NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3} state;
     Zone cur_zone;
-    uint8_t rest_wealth_time;
+    uint8_t rest_wealth_time = 0;
     std::vector<Zone> ZoneVector;
     std::vector<Tool> ToolVector;
 };
