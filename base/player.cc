@@ -24,14 +24,6 @@ inline bool Player::LostMoney(uint32_t money){
 void Player::PayToOtherPlayer(uint32_t money, Player& other){
 
 }
-//第一次买地向银行支付
-void Player::PayToBankForInit(uint32_t money, Bank& bank){
-
-}
-//盖房子向银行支付
-void Player::PayToBankForHouse(uint32_t money, Bank& bank){
-
-}
 //将用户状态设置为NORMAL
 inline void Player::SetNormState(){
 

@@ -2,55 +2,102 @@
 #define PLACE_H_
 
 #include"./player.h"
+#include"./tool.h"
 namespace monopoly{
-const uint32_t INITMONEY = 10000;
+typedef enum{Black, Red, Green, Yellow} Color;
+typedef enum{Zone,Hospital,Prison,Mine,MagicRoom,GiftRoom,ToolRoom} Type;
 class Place{
 public:
     Place() = default;
     Place(const Place& place) = default;
     ~Place() = default;
-    uint32_t Cost() const{
-        return this->cost;
-    }
-    Player Owner() const {
-        return this->owner;
-    }
-    void SetCost(const uint32_t& cost) {
-        this->cost = cost;
-    }
-    void SetOwner(const Player& owner) {
-        this->owner = owner;
-        this->belongs_to_bank = false;
-    }
-    void BuildHouse(const Player& player){
-        this->house_num++;
-    }
-    void SetOnwerBank() {
-        this->belongs_to_bank = true; 
-    }
-    bool BelongsToBank() const {
-        return this->belongs_to_bank;
-    }
+    uint8_t getPosition() const { return position; }
+    Color getColor() const { return color; }
+    Tool getTool() const { return tool; }
+    Type getType() const { return type; }
+protected:
+    bool belong_to_bank = true;
 private:
-    bool belongs_to_bank;
-    Player owner;
-    uint32_t init_cost;
-    uint32_t cost;
+    uint8_t position;
+    Color color;
+    Tool tool;
+    Type type;
+};
+class Zone : public Place{
+public:
+    Zone() = default;
+    Zone(const Zone& zone) = delete;
+    ~Zone() = default;
+    Type getType() = delete;
+
+    uint16_t getCost() const { return cost; }
+    uint8_t getHouseNum() const { return house_num; }
+private:
+    uint16_t cost;
     uint8_t house_num;
 };
-class Bank{
+class Hospital : public Place{
 public:
-    Bank() = default;
-    Bank(const Bank& bank) = default;
-    ~Bank() = default;
-    Bank& operator=(const Bank& bank) = delete;
-    void GetMoney(uint32_t money){
-        this->money += money;
-    }
-    void DistributeMoneyToPlayer(uint32_t money, Player& player);
-    //TODO:银行的钱是无限的？
+    Hospital() = default;
+    Hospital(const Hospital& hospital) = delete;
+    ~Hospital() = default;
+    Type getType() = delete;
+
+    void SetForbiddenState3(Player& player);
+};
+class Prison : public Place{
+public:
+    Prison() = default;
+    Prison(const Prison& prison) = delete;
+    ~Prison() = default;
+    Type getType() = delete;
+
+    void SetForbiddenState2(Player& player);
+};
+class Mine : public Place{
+public:
+    Mine() = default;
+    Mine(const Mine& mine) = delete;
+    ~Mine() = default;
+    Type getType() = delete;
+
+    void GivePointToPlayer(Player& player);
 private:
-    uint32_t money = INITMONEY;
+    int8_t point_num;
+};
+class MagicRoom : public Place{
+public:
+    MagicRoom() = default;
+    MagicRoom(const MagicRoom& magicRoom) = delete;
+    ~MagicRoom() = default;
+    Type getType() = delete;
+
+    void MaybePlayerUseMagic(Player& player);
+};
+class GiftRoom : public Place{
+public:
+    GiftRoom() = default;
+    GiftRoom(const GiftRoom& giftRoom) = delete;
+    ~GiftRoom() = default;
+    Type getType() = delete;
+
+    void MaybePlayerGetGift(Player& player);
+    void ChooseGift1(Player& player);
+    void ChooseGift2(Player& player);
+    void ChooseGift3(Player& player);
+private:
+    const int money_num;
+    const int point_num;
+};
+class ToolRoom : public Place{
+    ToolRoom() = default;
+    ToolRoom(const ToolRoom& toolRoom) = delete;
+    ~ToolRoom() = default;
+    Type getType() = delete;
+
+    void MaybePlayerBuyTool(Player& player);
+    void BuyTool(Player& player, Tool& tool);
+
 };
 }// namespace monopoly
 #endif // PLACE_H_

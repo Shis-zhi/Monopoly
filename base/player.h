@@ -17,17 +17,15 @@ public:
     void GetMoney(uint32_t money);
     bool LostMoney(uint32_t money);
     void PayToOtherPlayer(uint32_t money, Player& other);
-    void PayToBankForInit(uint32_t money, Bank& bank);
-    void PayToBankForHouse(uint32_t money, Bank& bank);
     void SetNormState();
     void SetForbiddenState();
     bool InPlaceVector(const Place& place) const;
-    void GetPlace(Place& place);
+    void GetPlace( Place& place);
     bool LostPlace(Place& place);
 private:
     uint32_t money;
     uint8_t dice_num;
-    enum PlayerState{NORMAL, FORBIDDEN} state;
+    enum PlayerState{NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3} state;
     Place cur_place;
     std::vector<Place> PlaceVector;
 };
