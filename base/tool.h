@@ -10,7 +10,9 @@ public:
     Tool(const Tool& Tool) = default;
     ~Tool() = default;
     ToolType GetType(){return this->tool_type;};
+    uint8_t GetPointCost(){return this->point_cost;};
 private:
+    uint8_t point_cost;
     ToolType tool_type;
     int8_t position;
 };

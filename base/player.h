@@ -15,6 +15,7 @@ public:
 
     friend class Zone;
     friend class GiftRoom;
+    friend class ToolRoom;
     friend class Hospital;
     friend class Prison;
 
@@ -37,7 +38,7 @@ private:
     uint32_t money = INITMONEY;
     uint32_t point = 0;
     uint8_t dice_num;
-    enum PlayerState{NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3} state;
+    PlayerState state;
     Place* cur_place;
     uint8_t rest_wealth_time = 0;
     std::vector<Zone> ZoneVector;

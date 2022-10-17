@@ -10,9 +10,6 @@ public:
     Place() = default;
     Place(const Place& place) = default;
     ~Place() = default;
-
-    //friend class Player;
-
     uint8_t getPosition() const { return position; }
     Color getColor() const { return color; }
     Tool getTool() const { return tool; }
@@ -36,7 +33,7 @@ public:
     uint8_t getHouseNum() const { return house_num; }
     Player getOwner() const { return this->owner; }
     void setOwner(Player& owner) { this->owner = owner; }
-    void MaybeTriggerEvent(Player& player);
+    bool MaybeTriggerEvent(Player& player);
     void OnOwnZone(Player& player);
     void OnOthersZone(Player& player);
     void OnEmptyZone(Player& player);
@@ -81,7 +78,7 @@ public:
     ~MagicRoom() = default;
     Type getType() = delete;
 
-    void MaybePlayerUseMagic(Player& player);
+    bool MaybePlayerUseMagic(Player& player);
 };
 class GiftRoom : public Place{
 public:
@@ -90,7 +87,7 @@ public:
     ~GiftRoom() = default;
     Type getType() = delete;
 
-    void MaybePlayerGetGift(Player& player, uint8_t choice);
+    bool MaybePlayerGetGift(Player& player, uint8_t choice);
     void ChooseGift1(Player& player);
     void ChooseGift2(Player& player);
     void ChooseGift3(Player& player);
@@ -100,13 +97,14 @@ private:
 };
 class ToolRoom : public Place{
 public:
+    friend class Player;
     ToolRoom() = default;
     ToolRoom(const ToolRoom& toolRoom) = delete;
     ~ToolRoom() = default;
     Type getType() = delete;
 
-    void MaybePlayerBuyTool(Player& player, uint8_t choice);
-    void BuyTool(Player& player, Tool& tool);
+    bool MaybePlayerBuyTool(Player& player, uint8_t choice);
+    bool MaybeBuyTool(Player& player, Tool tool);
 private:
     const std::vector<Tool> tools;
 };
