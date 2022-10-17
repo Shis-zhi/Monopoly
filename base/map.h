@@ -7,11 +7,18 @@
 namespace monopoly{
 class Map{
 public:
+    Map() = default;
+    Map(const Map& other) = delete;
+    ~Map() = default;
+    const Map& operator=(const Map& other) = delete;
     void InitMap();
     void InitPlaces();
     void InitPlayers();
+    friend class Player;
 private:
-    std::vector<std::unique_ptr<Place>> map;
+    const std::vector<std::unique_ptr<Place>> PlacePtrVector;
+    const std::unique_ptr<Place> map_start;
+    const std::unique_ptr<Place> map_end;
 };
 }// namespace monopoly
-#endif
+#endif// MAP_H_

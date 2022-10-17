@@ -1,31 +1,50 @@
 #include<iostream>
-#include"player.h"
+#include<cstdlib>
+#include<ctime>
+#include"./player.h"
+#include"./map.h"
 using std::cout;
 using std::endl;
 namespace monopoly{
 //随机数生成骰子点数：1-6
 inline uint8_t Player::DiceNum(){
-
+    srand((unsigned)time(NULL));
+    return rand() % 6 + 1;
+}
+bool Player::Advance(Map& global_map){
+    std::vector<std::unique_ptr<Place>>::const_iterator it;
+    Place* tmp_place = this->CurPlace(); 
+    it = std::find_if(global_map.PlacePtrVector.begin(), global_map.PlacePtrVector.end(), 
+                        [tmp_place](std::unique_ptr<Place> place){
+                            return tmp_place->getPosition()==place->getPosition();
+                            });
+    if(it != global_map.PlacePtrVector.end()){
+        if((*it)->getPosition() == global_map.map_end->getPosition()){
+            *(this->CurPlace()) = *(global_map.map_start);
+        } else {
+            std::advance(it,1);
+            *(this->cur_place) = **it;
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 //根据骰子点数决定前进步数
-inline void Player::UpdateCurZone(){
+void Player::UpdateCurPlace(Map& global_map){
     //迭代器寻找this->cur_zone位置
     //利用迭代器寻找元素
-    std::vector<Zone>::const_iterator it;
-    it = std::find(this->ZoneVector.begin(), this->ZoneVector.end(), this->cur_zone);
-    //TODO:循环
-    std::advance(it,this->dice_num);
-    this->cur_zone = it;
+    for(int i=0; i<this->DiceNum();i++){
+        this->Advance(global_map);
+    }
 }
 //获取player当前位置
-inline Zone Player::CurZone(){
-    return this->cur_zone;
+inline Place* Player::CurPlace(){
+    return this->cur_place;
 }
 //获得货币
 inline void Player::GetMoney(uint32_t money){
-    cout << "this->money" << this->money << endl;
     this->money += money;
-    cout << "this->money" << this->money << endl;
 }
 //失去货币，this->money - money < 0?
 inline bool Player::LostMoney(uint32_t money){

@@ -9,8 +9,8 @@ namespace monopoly{
     typedef unsigned short int      uint16_t;
     typedef unsigned int            uint32_t;
 
-    const uint8_t MaxSize = 69;
-
+    extern const uint8_t MaxSize = 70;
+    typedef enum{BOMB, BARRICADE, DOLL}ToolType;
     typedef enum{Black, Red, Green, Yellow} Color;
     typedef enum{ZONE,HOSPITAL,PRISON,MINE,MAGICROOM,GIFTROOM,TOOLROOM} Type;
 }// namespace monopoly

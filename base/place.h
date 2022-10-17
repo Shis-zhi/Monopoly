@@ -22,7 +22,7 @@ protected:
     bool belong_to_bank = true;
 private:
     uint8_t position;
-    Color color;
+    Color color; 
     Tool tool;
     Type type;
 };
@@ -34,6 +34,12 @@ public:
     Type getType() = delete;
     uint16_t getCost() const { return cost; }
     uint8_t getHouseNum() const { return house_num; }
+    Player getOwner() const { return this->owner; }
+    void setOwner(Player& owner) { this->owner = owner; }
+    void MaybeTriggerEvent(Player& player);
+    void OnOwnZone(Player& player);
+    void OnOthersZone(Player& player);
+    void OnEmptyZone(Player& player);
 private:
     Player owner;
     uint16_t cost;

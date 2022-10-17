@@ -2,6 +2,7 @@
 #define PLAYER_H_
 
 #include"./place.h"
+#include"./map.h"
 #include<vector>
 
 namespace monopoly{
@@ -18,8 +19,9 @@ public:
     friend class Prison;
 
     uint8_t DiceNum();
-    void UpdateCurZone();
-    Zone CurZone();
+    bool Advance(Map& global_map);
+    void UpdateCurPlace(Map& global_map);
+    Place* CurPlace();
     void GetMoney(uint32_t money);
     bool LostMoney(uint32_t money);
     void GetPoint(uint32_t point);
@@ -31,13 +33,12 @@ public:
     bool LostZone(Zone& zone);
     void GetTool(Tool& tool);
     bool UseTool(Tool& tool, Zone& zone);
-    
 private:
     uint32_t money = INITMONEY;
     uint32_t point = 0;
     uint8_t dice_num;
     enum PlayerState{NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3} state;
-    Zone cur_zone;
+    Place* cur_place;
     uint8_t rest_wealth_time = 0;
     std::vector<Zone> ZoneVector;
     std::vector<Tool> ToolVector;
