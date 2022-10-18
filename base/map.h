@@ -12,11 +12,11 @@ public:
     ~Map() = default;
     const Map& operator=(const Map& other) = delete;
     void InitMap();
-    void InitPlaces();
-    void InitPlayers();
+    void InitAllPlaces();
+    std::unique_ptr<Place> InitSinglePlace(uint8_t pos);
     friend class Player;
 private:
-    const std::vector<std::unique_ptr<Place>> PlacePtrVector;
+    std::vector<std::unique_ptr<Place>> PlacePtrVector;
     const std::unique_ptr<Place> map_start;
     const std::unique_ptr<Place> map_end;
 };

@@ -9,6 +9,7 @@ class Place{
 public:
     Place() = default;
     Place(const Place& place) = default;
+    Place(uint8_t pos,Type type):position(pos),type(type){};
     ~Place() = default;
     uint8_t getPosition() const { return position; }
     Color getColor() const { return color; }
@@ -17,7 +18,6 @@ public:
     Type getType() const { return type; }
 protected:
     bool belong_to_bank = true;
-private:
     uint8_t position;
     Color color; 
     Tool tool;
@@ -27,6 +27,11 @@ class Zone : public Place{
 public:
     Zone() = default;
     Zone(const Zone& zone) = default;
+    Zone(uint8_t pos,Type type,uint16_t cost){
+        this->position = pos;
+        this->type = type;
+        this->cost = cost;    
+    };
     ~Zone() = default;
     Type getType() = delete;
     uint16_t getCost() const { return cost; }
@@ -46,6 +51,10 @@ class Hospital : public Place{
 public:
     Hospital() = default;
     Hospital(const Hospital& hospital) = delete;
+    Hospital(uint8_t position,Type type){
+        this->position = position;
+        this->type = type;
+    }
     ~Hospital() = default;
     Type getType() = delete;
 
@@ -55,6 +64,10 @@ class Prison : public Place{
 public:
     Prison() = default;
     Prison(const Prison& prison) = delete;
+    Prison(uint8_t position,Type type){
+        this->position = position;
+        this->type = type;
+    }
     ~Prison() = default;
     Type getType() = delete;
 
@@ -64,6 +77,11 @@ class Mine : public Place{
 public:
     Mine() = default;
     Mine(const Mine& mine) = delete;
+    Mine(uint8_t position,Type type,uint8_t point){
+        this->position = position;
+        this->type = type;
+        this->point_num = point;
+    }
     ~Mine() = default;
     Type getType() = delete;
 
@@ -75,6 +93,10 @@ class MagicRoom : public Place{
 public:
     MagicRoom() = default;
     MagicRoom(const MagicRoom& magicRoom) = delete;
+    MagicRoom(uint8_t position,Type type){
+        this->position = position;
+        this->type = type;
+    }
     ~MagicRoom() = default;
     Type getType() = delete;
 
@@ -84,6 +106,10 @@ class GiftRoom : public Place{
 public:
     GiftRoom() = default;
     GiftRoom(const GiftRoom& giftRoom) = delete;
+    GiftRoom(uint8_t position,Type type){
+        this->position = position;
+        this->type = type;
+    }
     ~GiftRoom() = default;
     Type getType() = delete;
 
@@ -92,14 +118,18 @@ public:
     void ChooseGift2(Player& player);
     void ChooseGift3(Player& player);
 private:
-    const uint8_t money_num;
-    const uint8_t point_num;
+    const uint8_t money_num = 2000;
+    const uint8_t point_num = 200;
 };
 class ToolRoom : public Place{
 public:
     friend class Player;
     ToolRoom() = default;
     ToolRoom(const ToolRoom& toolRoom) = delete;
+    ToolRoom(uint8_t position,Type type){
+        this->position = position;
+        this->type = type;
+    }
     ~ToolRoom() = default;
     Type getType() = delete;
 
