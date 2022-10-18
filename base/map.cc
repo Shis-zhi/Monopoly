@@ -2,7 +2,7 @@
 #include"./public.h"
 namespace monopoly{
 void Map::InitMap(){
-    
+    InitAllPlaces();
 }
 void Map::InitAllPlaces(){
     uint8_t mine_point[6]={20,80,100,40,80,60};
