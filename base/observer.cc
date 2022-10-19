@@ -18,7 +18,12 @@ void Observer::InitGlobalObserver(std::string choice){
 void Observer::MaybePresetParas(){
     //TODO:set player&place paras(private)
 }
-std::vector<Player>::const_iterator FindPlayer(PlayerName player_name){
-    
+std::vector<Player>::const_iterator Observer::FindPlayer(PlayerName player_name){
+    std::vector<Player>::const_iterator it;
+    it = std::find_if(this->global_players.begin(), this->global_players.end(), 
+                        [player_name](PlayerName player_name_){
+                            return player_name==player_name_;
+                            });
+    return it;
 }
 } // namespace monopoly

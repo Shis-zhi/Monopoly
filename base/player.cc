@@ -36,6 +36,7 @@ void Player::UpdateCurPlace(Map& global_map){
     //利用迭代器寻找元素
     for(int i=0; i<this->DiceNum();i++){
         this->Advance(global_map);
+        //TODO:道具判定
     }
 }
 //获取player当前位置
@@ -77,7 +78,10 @@ void Player::PayToOtherPlayer(uint32_t money, Player& other){
 //判断zone是否在player的ZoneVector中
 bool Player::InZoneVector(const Zone& zone) const{
     std::vector<Zone>::const_iterator it;
-    it = std::find(this->ZoneVector.begin(), this->ZoneVector.end(), zone);
+    it = std::find_if(this->ZoneVector.begin(), this->ZoneVector.end(), 
+                        [zone](Zone zone_){
+                            return zone.getPosition()==zone_.getPosition();
+                            });
     if(it == this->ZoneVector.end()){
         return false;
     } else {
@@ -104,7 +108,10 @@ void Player::GetTool(Tool& tool){
 //判断tool是否在player的ToolVector中
 bool Player::InToolVector(const Tool& tool) const{
     std::vector<Tool>::const_iterator it;
-    it = std::find(this->ToolVector.begin(), this->ToolVector.end(), tool);
+    it = std::find_if(this->ToolVector.begin(), this->ToolVector.end(), 
+                        [tool](Tool tool_){
+                            return tool.tool_type==tool_.tool_type;
+                            });
     if(it == this->ToolVector.end()){
         return false;
     } else {
