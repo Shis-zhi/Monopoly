@@ -9,8 +9,11 @@ namespace monopoly{
     typedef unsigned short int      uint16_t;
     typedef unsigned int            uint32_t;
 
+    extern const uint32_t INITMONEY = 10000;
     extern const uint8_t MaxSize = 70;
-    typedef enum {NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3}PlayerState;
+    
+    typedef enum{QFR,ATB,SXM,JBB}PlayerName;
+    typedef enum{NORMAL, FORBIDDEN1, FORBIDDEN2, FORBIDDEN3}PlayerState;
     typedef enum{BOMB, BARRICADE, DOLL}ToolType;
     typedef enum{Black, Red, Green, Yellow} Color;
     typedef enum{START,ZONE,HOSPITAL,PRISON,MINE,MAGICROOM,GIFTROOM,TOOLROOM} Type;

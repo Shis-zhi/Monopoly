@@ -1,16 +1,17 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include"./public.h"
 #include"./place.h"
 #include"./map.h"
 #include<vector>
 
 namespace monopoly{
-const int INITMONEY = 10000;
 class Player{
 public:
     Player()= default;
     Player(const Player& player) = default;
+    Player(PlayerName name):name(name) {};
     ~Player() = default;
 
     friend class Zone;
@@ -35,10 +36,11 @@ public:
     void GetTool(Tool& tool);
     bool UseTool(Tool& tool, Zone& zone);
 private:
+    PlayerName name;
     uint32_t money = INITMONEY;
     uint32_t point = 0;
     uint8_t dice_num;
-    PlayerState state;
+    PlayerState state = NORMAL;
     Place* cur_place;
     uint8_t rest_wealth_time = 0;
     std::vector<Zone> ZoneVector;

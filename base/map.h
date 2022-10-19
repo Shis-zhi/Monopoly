@@ -14,7 +14,6 @@ public:
     
     friend class Player;
 
-    void InitMap();
     void InitAllPlaces();
     std::vector<std::unique_ptr<Place>>::const_iterator FindPlace(uint8_t pos) const;
 private:
