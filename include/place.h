@@ -11,13 +11,21 @@ public:
     Place(const Place& place) = default;
     Place(uint8_t pos,Type type):position(pos),type(type){};
     ~Place() = default;
+
+    friend class Tool;
+
     uint8_t getPosition() const { return position; }
     Color getColor() const { return color; }
     Tool getTool() const { return tool; }
-    void setTool(const Tool& tool) { this->tool = tool; }
+    void setTool(const Tool& tool) {
+        this->tool = tool;
+        this->is_empty = false;
+    }
     Type getType() const { return type; }
+    bool IsEmpty() const { return ;}
 protected:
     bool belong_to_bank = true;
+    bool is_empty = true;
     uint8_t position;
     Color color; 
     Tool tool;
