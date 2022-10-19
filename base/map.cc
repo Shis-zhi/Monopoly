@@ -30,4 +30,12 @@ void Map::InitAllPlaces(){
         }
     }
 }
+std::vector<std::unique_ptr<Place>>::const_iterator Map::FindPlace(uint8_t pos) const {
+    std::vector<std::unique_ptr<Place>>::const_iterator iter;
+    iter = std::find_if(this->PlacePtrVector.begin(), this->PlacePtrVector.end(), 
+                        [pos](std::unique_ptr<Place> place){
+                            return pos==place->getPosition();
+                            });
+    return iter;
+}
 }// namespace monopoly
