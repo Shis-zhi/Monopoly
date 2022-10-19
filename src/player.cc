@@ -3,8 +3,6 @@
 #include<ctime>
 #include"./player.h"
 #include"./map.h"
-using std::cout;
-using std::endl;
 namespace monopoly{
 //随机数生成骰子点数：1-6
 inline uint8_t Player::DiceNum(){

@@ -3,7 +3,7 @@
 
 namespace monopoly{
 void Bomb::Trigger(Player& player, Place& place) const{
-
+    
 }
 void Barricade::Trigger(Player& player, Place& place) const{
 
