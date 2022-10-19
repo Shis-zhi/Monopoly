@@ -1,5 +1,5 @@
-#include"./place.h"
-#include"./public.h"
+#include"../include/place.h"
+#include"../include/public.h"
 #include<vector>
 namespace monopoly{
 //设置player的state为FORBIDDEN3

@@ -14,15 +14,15 @@ public:
 
     friend class Tool;
 
-    uint8_t getPosition() const { return position; }
-    Color getColor() const { return color; }
-    Tool getTool() const { return tool; }
+    uint8_t getPosition() const { return this->position; }
+    Color getColor() const { return this->color; }
+    Tool getTool() const { return this->tool; }
     void setTool(const Tool& tool) {
         this->tool = tool;
         this->is_empty = false;
     }
-    Type getType() const { return type; }
-    bool IsEmpty() const { return ;}
+    Type getType() const { return this->type; }
+    bool IsEmpty() const { return this->is_empty;}
 protected:
     bool belong_to_bank = true;
     bool is_empty = true;

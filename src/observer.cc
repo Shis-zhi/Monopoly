@@ -1,4 +1,4 @@
-#include"./observer.h"
+#include"../include/observer.h"
 namespace monopoly{
 void Observer::InitGlobalMap(){
     this->global_map.InitAllPlaces();

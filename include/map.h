@@ -18,7 +18,6 @@ public:
     std::vector<std::unique_ptr<Place>>::const_iterator FindPlace(uint8_t pos) const;
 private:
     std::vector<std::unique_ptr<Place>> PlacePtrVector;
-    const std::unique_ptr<Place> global_hospital{new Place(14,HOSPITAL)};
     const std::unique_ptr<Place> map_start{new Place(0,START)};
     const std::unique_ptr<Place> map_end{new Mine(69,MINE,60)};
 };

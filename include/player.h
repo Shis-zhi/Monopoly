@@ -18,6 +18,7 @@ public:
     friend class GiftRoom;
     friend class ToolRoom;
     friend class Hospital;
+    friend class Barricade;
     friend class Prison;
 
     uint8_t DiceNum();
@@ -35,7 +36,12 @@ public:
     bool LostZone(Zone& zone);
     void GetTool(Tool& tool);
     bool UseTool(Tool& tool, Zone& zone);
+    void GoToHospital();
+    bool IsHurted(){return this->is_hurted;};
+    bool CanAdvance(){return this->can_advance;};
 private:
+    bool is_hurted=false;
+    bool can_advance=true;
     PlayerName name;
     uint32_t money = INITMONEY;
     uint32_t point = 0;

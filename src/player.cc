@@ -1,8 +1,8 @@
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
-#include"./player.h"
-#include"./map.h"
+#include"../include/player.h"
+#include"../include/map.h"
 namespace monopoly{
 //随机数生成骰子点数：1-6
 inline uint8_t Player::DiceNum(){
@@ -125,5 +125,11 @@ bool Player::UseTool(Tool& tool,Zone& zone){
     } else {
         return false;
     }
+}
+void Player::GoToHospital(){
+    const Hospital hospital(14,HOSPITAL);
+    const Place* const tmp = &hospital;
+    *(this->cur_place) = *tmp;
+    this->is_hurted = true;
 }
 }// namespace monopoly

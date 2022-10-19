@@ -19,6 +19,7 @@ public:
     void InitGlobalMap();
     void InitGlobalPlayers(std::string choice);
     void MaybePresetParas();
+    Map& GlobalMap(){return global_map;}
     std::vector<Player>::const_iterator FindPlayer(PlayerName player_name);
 private:
     Map global_map;
